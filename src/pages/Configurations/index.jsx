@@ -4,14 +4,20 @@ import { useEffect } from "react"
 import { useTheme } from "../../hooks/useTheme"
 import { contents } from '../../assets/translate/contents'
 import { useLanguage } from '../../hooks/useLanguage'
+import { useHighContrast } from '../../hooks/useHighContrast'
+import { useBigLetters } from '../../hooks/useBigLetters'
 
 export function Configurations() {
 
     // Utilização do Hook useTheme
     const { theme, changeTheme } = useTheme()
     const { currentLanguage, changeCurrentLanguage } = useLanguage()
+    const { currentHighContrast, changeHighContrast } = useHighContrast()
+    const { bigLetters, changeLettersSize } = useBigLetters()
 
     // contents['configurationComponent']
+
+    console.log(`${bigLetters}`)
 
     return (
 
@@ -23,7 +29,7 @@ export function Configurations() {
 
                 <section>
 
-                    <h1>{contents.configurationComponent.sectionTitleTheme[currentLanguage]}</h1>
+                    <h2>{contents.configurationComponent.sectionTitleTheme[currentLanguage]}</h2>
 
                     <div>
                         <input type="radio" name="theme" id="light" checked={theme === 'light'} onChange={() => changeTheme('light')} />
@@ -36,26 +42,26 @@ export function Configurations() {
                     </div>
 
                     <div>
-                        <input type="radio" name="theme" />
-                        <label htmlFor="">Alto Contraste</label>
+                        <input type="radio" name="theme" id="high-contrast" checked={theme === "high-contrast"} onChange={() => changeTheme('high-contrast')} />
+                        <label htmlFor="high-contrast">Alto Contraste</label>
                     </div>
 
                 </section>
 
                 <section>
 
-                    <h1>Acessibilidade</h1>
+                    <h2>Acessibilidade</h2>
 
                     <div>
-                        <label htmlFor="language">Letras grandes</label>
-                        <input type="checkbox" id="" />
+                        <label htmlFor="big-letters">Letras grandes</label>
+                        <input type="checkbox" id="big-letters" checked={bigLetters === true} onChange={() => changeLettersSize()} />
                     </div>
 
                 </section>
 
                 <section>
 
-                    <h1>Linguagem</h1>
+                    <h2>Linguagem</h2>
 
                     <div>
                         <label htmlFor="language">Linguagem</label>

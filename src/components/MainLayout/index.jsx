@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import { useTheme } from '../../hooks/useTheme'
+import { useBigLetters } from '../../hooks/useBigLetters'
+// import { useHighContrast } from '../../hooks/useHighContrast'
 
 import './style.scss'
 
@@ -13,10 +15,12 @@ export function MainLayout() {
 
     // Importação do Tema utilização o Hook customizado "useTheme"
     const { theme } = useTheme()
+    const { bigLetters } = useBigLetters()
+    // const { currentHighContrast } = useHighContrast()
 
     return (
         // Alteração da Classe baseado no valor do Tema
-        <div className={`main-layout-component ${theme}`}>
+        <div className={`main-layout-component ${theme} ${bigLetters ? 'big-letters' : ''}`}>
             <header className='main-layout-component-header'>
                 <h1>Front-end Terceiro Bimestre - React</h1>
             </header>

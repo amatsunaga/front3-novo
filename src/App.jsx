@@ -19,6 +19,8 @@ import { ToDo } from "./pages/ToDo"
 import { ThemeProvider } from "./hooks/useTheme"
 import { Configurations } from "./pages/Configurations"
 import { LanguageProvider } from "./hooks/useLanguage"
+import { HighContrastProvider } from "./hooks/useHighContrast"
+import { BigLettersProvider } from "./hooks/useBigLetters"
 
 function App() {
 
@@ -74,7 +76,11 @@ function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <RouterProvider router={appRouter} />
+        <HighContrastProvider>
+          <BigLettersProvider>
+            <RouterProvider router={appRouter} />
+          </BigLettersProvider>
+        </HighContrastProvider>
       </LanguageProvider>
     </ThemeProvider>
   )
